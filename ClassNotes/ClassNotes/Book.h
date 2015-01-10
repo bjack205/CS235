@@ -1,4 +1,3 @@
-#pragma once
 
 #include <iostream>
 #include <string>
@@ -6,11 +5,10 @@
 using std::string;
 
 class Book {
-private:
+public:
 	string title;
 	string author;
 
-public:
 	//Constructor
 	Book(string t, string a) :title(t), author(a){}
 

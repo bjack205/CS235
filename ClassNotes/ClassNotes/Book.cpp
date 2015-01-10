@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <string>
 #include "Book.h"
 using std::string;
 using std::stringstream;
