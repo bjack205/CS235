@@ -1,3 +1,11 @@
+
+## ignore Eclipse files
+.metadata*
+.settings*
+.cproject*
+.project*
+.Debug*
+
 #Manually added in
 *.sln
 *.vcxproj*
