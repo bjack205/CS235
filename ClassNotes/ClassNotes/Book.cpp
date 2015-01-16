@@ -1,9 +1,14 @@
+
+
 #include <iostream>
 #include <sstream>
 #include <string>
-#include "Book.h"
+
 using std::string;
 using std::stringstream;
+
+#include "Book.h"
+
 
 void Book::setTitle(string title) {
 	this->title = title;
@@ -18,3 +23,4 @@ string Book::toString() const {
 	out << "Book: title: " << title << " author: " << author;
 	return out.str();
 }
+

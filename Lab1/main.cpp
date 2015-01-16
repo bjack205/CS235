@@ -1,27 +1,18 @@
-/*
- * main.cpp
- *
- *  Created on: Jan 15, 2015
- *      Author: bjack205
- */
-
 #include <iostream>
 #include <string>
 #include <vector>
 #include "Fighter.h"
+#include "Arena.h"
 
 using namespace std;
 
 int main()
 {
-	Fighter Jack ("Jackson",10,10,10);
+	Fighter Jack ("Jackson",10,10,10,10);
+	Arena stadium;
 
-
-	int hp;
-	hp = Jack.getHP();
-
-	cout << "Jack's hp is " << hp << endl;
-
+	system("pause");
+	return 0;
 }
 
 
