@@ -27,10 +27,10 @@ public:
 	int getStrength();
 	int getSpeed();
 	int getMagic();
-	int getDamage();
-	void takeDamage(int damage);
-	void reset();
-	void regenerate();
-	bool useAbility();
+	virtual int getDamage();
+	virtual void takeDamage(int damage);
+	virtual void reset();
+	virtual void regenerate();
+	virtual bool useAbility();
 
 };

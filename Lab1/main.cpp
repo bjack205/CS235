@@ -11,7 +11,7 @@ int main()
 	Fighter Jack ("Jackson",10,10,10,10);
 	Arena stadium;
 
-	system("pause");
+	//system("pause");
 	return 0;
 }
 
