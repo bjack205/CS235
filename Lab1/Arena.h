@@ -2,14 +2,14 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
+#include <map>
 #include "ArenaInterface.h"
 using namespace std;
 
 class Arena : public ArenaInterface
 {
 private:
-	vector<FighterInterface*> roster;
+	map<string, FighterInterface*> list;
 public:
 	Arena(){};
 	bool addFighter(string info);
