@@ -64,20 +64,65 @@ bool Arena::addFighter(string info) {
 	}
 	if (strm.fail()) return false;
 
+	//Strength
+	strm >> input;
+	strength = atoi(input.c_str());
+	if (strength <= 0 || !check_int(input))
+	{
+		cout << "**Error. Strength must be a positive integer**" << endl;
+		return false;
+	}
+	if (strm.fail()) return false;
 
-	strm >> name;
-	strm >> type;
-	strm >> hp >> strength >> speed >> magic;
+	//Speed
+	strm >> input;
+	speed = atoi(input.c_str());
+	if (speed <= 0 || !check_int(input))
+	{
+		cout << "**Error. Speed must be a positive integer**" << endl;
+		return false;
+	}
+	if (strm.fail()) return false;
 
+	//Magic
+	strm >> input;
+	magic = atoi(input.c_str());
+	if (magic <= 0 || !check_int(input))
+	{
+		cout << "**Error. Magic must be a positive integer**" << endl;
+		return false;
+	}
+	if (strm.fail()) return false;
+	
+	strm >> input;
+	if (!strm.fail())
+	{
+		cout << "**Error. Additional Input**" << endl;
+		return false;
+	}
+
+	list[name] = new Fighter(name, hp, strength, speed, magic);
+	cout << name << " has " << hp << " HP, " << strength << " Strength, " << speed << " Speed, and " << magic << " Magic." << endl;
 	return true;
 }
 bool Arena::removeFighter(string name) {
-	return false;
+	if (list.count(name) == 1) {
+		list.erase(name);
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 FighterInterface* Arena::getFighter(string name) {
+	if (list.count(name) == 1) {
+		return list[name];
+	}
+	else return NULL;
+
 	Fighter* fighterpoint = new Fighter();
 	return fighterpoint;
 }
 int Arena::getSize() {
-	return 1;
+	return list.size();
 }
