@@ -7,3 +7,4 @@
 #include "Factory.h"
 #include "Archer.h"
 #include "Robot.h"
+#include "Cleric.h"
