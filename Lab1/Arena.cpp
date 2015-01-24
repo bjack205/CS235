@@ -38,7 +38,7 @@ bool Arena::addFighter(string info) {
 	strm >> input;
 	name = input;
 	if (list.count(name) == 1) {
-		cout << "Name already used" << endl;
+		//cout << "Name already used" << endl;
 		return false;
 	}
 	if (strm.fail()) return false;
@@ -47,7 +47,7 @@ bool Arena::addFighter(string info) {
 	strm >> input;
 	type = input;
 	if (type != "R" && type != "C" && type != "A") {
-		cout << "Invalid Type" << endl;
+		//cout << "Invalid Type" << endl;
 		return 0;
 	}
 	if (strm.fail()) return false;
@@ -57,7 +57,7 @@ bool Arena::addFighter(string info) {
 	hp = atoi(input.c_str());
 	if (hp <= 0 || !check_int(input))
 	{
-		cout << "**Error. HP must be a positive integer**" << endl;
+		//cout << "**Error. HP must be a positive integer**" << endl;
 		return false;
 	}
 	if (strm.fail()) return false;
@@ -67,7 +67,7 @@ bool Arena::addFighter(string info) {
 	strength = atoi(input.c_str());
 	if (strength <= 0 || !check_int(input))
 	{
-		cout << "**Error. Strength must be a positive integer**" << endl;
+		//cout << "**Error. Strength must be a positive integer**" << endl;
 		return false;
 	}
 	if (strm.fail()) return false;
@@ -77,7 +77,7 @@ bool Arena::addFighter(string info) {
 	speed = atoi(input.c_str());
 	if (speed <= 0 || !check_int(input))
 	{
-		cout << "**Error. Speed must be a positive integer**" << endl;
+		//cout << "**Error. Speed must be a positive integer**" << endl;
 		return false;
 	}
 	if (strm.fail()) return false;
@@ -87,7 +87,7 @@ bool Arena::addFighter(string info) {
 	magic = atoi(input.c_str());
 	if (magic <= 0 || !check_int(input))
 	{
-		cout << "**Error. Magic must be a positive integer**" << endl;
+		//cout << "**Error. Magic must be a positive integer**" << endl;
 		return false;
 	}
 	if (strm.fail()) return false;
@@ -95,7 +95,7 @@ bool Arena::addFighter(string info) {
 	strm >> input;
 	if (!strm.fail())
 	{
-		cout << "**Error. Additional Input**" << endl;
+		//cout << "**Error. Additional Input**" << endl;
 		return false;
 	}
 
@@ -109,7 +109,7 @@ bool Arena::addFighter(string info) {
 	else if (type == "C") {
 		list[name] = new Cleric(name, hp, strength, speed, magic);
 	}
-	cout << name << " has " << hp << " HP, " << strength << " Strength, " << speed << " Speed, and " << magic << " Magic." << endl;
+	//cout << name << " has " << hp << " HP, " << strength << " Strength, " << speed << " Speed, and " << magic << " Magic." << endl;
 	return true;
 }
 bool Arena::removeFighter(string name) {

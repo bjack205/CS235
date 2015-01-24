@@ -1,4 +1,6 @@
 #include "Factory.h"
+#include "ArenaInterface.h"
+#include "Arena.h"
 //You may add #include statments here
 using namespace std;
 
@@ -16,6 +18,7 @@ using namespace std;
  */
 ArenaInterface* Factory::createArena()
 {
-	return NULL;//Modify this line
+	ArenaInterface* a1 = new Arena();
+	return a1;//Modify this line
 }
 //=======================================================================================
