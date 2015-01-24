@@ -103,7 +103,10 @@ bool Arena::addFighter(string info) {
 	if (type == "A") {
 		list[name] = new Archer(name, hp, strength, speed, magic);
 	}
-	else {
+	else if (type == "R") {
+		list[name] = new Robot(name, hp, strength, speed, magic);
+	}
+	else if (type == "C") {
 		list[name] = new Fighter(name, hp, strength, speed, magic);
 	}
 	cout << name << " has " << hp << " HP, " << strength << " Strength, " << speed << " Speed, and " << magic << " Magic." << endl;

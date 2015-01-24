@@ -11,7 +11,7 @@ int main()
 	Arena a1 = Arena();
 	a1.addFighter("Father A 100 1 1 1");
 	a1.addFighter("Jack R 10 2 1 3");
-	a1.addFighter("Tinman R 100 5 1 7");
+	a1.addFighter("Tinman R 100 20 1 10");
 	a1.addFighter("Father_Braeburn C 90 4 12 20");
 	a1.addFighter("Israphel A 90 12 16 1");
 
@@ -138,7 +138,10 @@ int main()
 		}
 		if (input_selection == 11)
 		{
-			a1.getFighter(name)->useAbility();
+			if (a1.getFighter(name)->useAbility())
+				cout << "Ability used" << endl;
+			else
+				cout << "Ability not used" << endl;
 		}
 		if (input_selection == 12) {
 			return 0;
