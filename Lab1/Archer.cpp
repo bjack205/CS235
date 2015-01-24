@@ -8,17 +8,14 @@ int Archer::getSpeed() {
 	return current_speed;
 }
 int Archer::getDamage() {
-	return 0;
-}
-void Archer::takeDamage(int damage) {
-
+	return current_speed;
 }
 void Archer::reset() {
-
-}
-void Archer::regenerate() {
-
+	Fighter::reset();
+	current_speed = speed;
 }
 bool Archer::useAbility() {
-	return false;
+	//Quickstep
+	current_speed++;
+	return true;
 }

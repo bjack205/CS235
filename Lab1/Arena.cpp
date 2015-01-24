@@ -4,9 +4,7 @@
 #include <cctype>
 #include <map>
 #include <stdlib.h>
-#include "Arena.h"
-#include "FighterInterface.h"
-#include "Fighter.h"
+#include "Header.h"
 using namespace std;
 
 bool check_int (string input)
@@ -101,7 +99,13 @@ bool Arena::addFighter(string info) {
 		return false;
 	}
 
-	list[name] = new Fighter(name, hp, strength, speed, magic);
+	
+	if (type == "A") {
+		list[name] = new Archer(name, hp, strength, speed, magic);
+	}
+	else {
+		list[name] = new Fighter(name, hp, strength, speed, magic);
+	}
 	cout << name << " has " << hp << " HP, " << strength << " Strength, " << speed << " Speed, and " << magic << " Magic." << endl;
 	return true;
 }

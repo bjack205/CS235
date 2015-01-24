@@ -5,3 +5,4 @@
 #include "FighterInterface.h"
 #include "Fighter.h"
 #include "Factory.h"
+#include "Archer.h"

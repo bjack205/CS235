@@ -27,7 +27,7 @@ int Fighter::getDamage() { //Class Specific
 	return 0;
 }
 void Fighter::takeDamage(int damage) {
-	int dodge = speed / 4;
+	int dodge = this->getSpeed() / 4;
 	int damage_done = damage - dodge;
 	if (damage_done < 1) damage_done = 1;
 	currentHP -= damage_done;

@@ -9,7 +9,7 @@ using std::cout;
 using std::string;
 
 class Fighter : public FighterInterface {
-private:
+protected:
 	string name;
 	int maxHP;
 	int currentHP;
