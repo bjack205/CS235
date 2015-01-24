@@ -8,16 +8,18 @@ int Cleric::getDamage() {
 	return magic;
 }
 void Cleric::reset() {
+	Fighter::reset();
 	mana = mana_max;
 }
 void Cleric::regenerate() {
-	int mana_boot = magic / 5;
-	if (mana_boot < 1) mana_boot = 1;
-	if (mana + mana_boot > mana_max) {
+	Fighter::regenerate();
+	int mana_boost = magic / 5;
+	if (mana_boost < 1) mana_boost = 1;
+	if (mana + mana_boost > mana_max) {
 		mana = mana_max;
 	}
 	else {
-		mana += mana_boot;
+		mana += mana_boost;
 	}
 }
 bool Cleric::useAbility() {
