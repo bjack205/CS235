@@ -1,5 +1,5 @@
 #pragma once
-#include <set>
+#include <stdexcept>
 
 using namespace std;
 
@@ -15,6 +15,9 @@ private:
 	Node* tail;
 public:
 	List() : num_items(0), head(NULL), tail(NULL){};
+	~List() {
+		this->clear();
+	}
 	void insertHead(ItemType value) {
 		if (!InList(value)) {
 			Node* n = new Node();
@@ -84,26 +87,26 @@ public:
 				prevNode = prevNode->next;
 			}
 		}
-		/*
-		while (node->next != NULL) {
-			if (node->next->item == value) {
-				Node* toRemove = *node->next;
-				node->next = toRemove->next;
-				if (node->next == NULL) tail = node;
-				if (head == toRemove) 
-					head = node->next;
-				toRemove->next = NULL;
-				delete toRemove;
-				num_items--;
-			}
-			node = node->next;
-		}
-		node = node->next;
-		delete node;
-		*/
 	}
 	int size() {
 		return num_items;
+	}
+	void clear() {
+		while (this->size() > 0)
+			this->remove(head->item);
+	}
+	ItemType at(int index) {
+		if (index >= num_items || index < 0) {
+			throw out_of_range("out of range");
+		}
+		else {
+			Node* n = head;
+			for (int i = 0; i <= index; i++) {
+				if (i == index)
+					return n->item;
+				n = n->next;
+			}
+		}
 	}
 
 	ItemType getHead() {

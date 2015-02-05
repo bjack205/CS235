@@ -27,6 +27,16 @@ int main() {
 	numbers.PrintList();
 	numbers.remove(numbers.getHead());
 	numbers.PrintList();
+
+	numbers.insertHead(0);
+	numbers.insertHead(5);
+	numbers.insertHead(2);
+	numbers.insertHead(1);
+	numbers.insertTail(10);
+	numbers.insertAfter(3, 4);
+	numbers.PrintList();
+	
+	cout << "Item at index 4: " << numbers.at(4) << endl;
 	
 	//cout << numbers.InList(2) << endl;
 	cout << "Head: " << numbers.getHead() << " Tail: " << numbers.getTail() << endl;
