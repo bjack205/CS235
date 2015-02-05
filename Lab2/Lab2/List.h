@@ -1,10 +1,11 @@
 #pragma once
 #include <stdexcept>
+#include "LinkedListInterface.h"
 
 using namespace std;
 
 template<typename ItemType>
-class List {
+class List: public LinkedListInterface<ItemType> {
 private:
 	struct Node {
 		ItemType item;
