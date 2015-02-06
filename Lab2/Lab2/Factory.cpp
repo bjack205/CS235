@@ -1,5 +1,6 @@
 #include "Factory.h"
 #include "List.h"
+#include <string>
 
 //You may add #include statements here
 
@@ -30,5 +31,5 @@ LinkedListInterface<int> * Factory::getLinkedListInt()
 */
 LinkedListInterface<string>* Factory::getLinkedListString()
 {
-	return NULL;//Modify this line
+  return new List<string>();//Modify this line
 }

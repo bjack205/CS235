@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <stdexcept>
 #include "LinkedListInterface.h"
 
@@ -33,11 +34,11 @@ public:
 	}
 	void insertTail(ItemType value) {
 		if (!InList(value)) {
-			Node* n = new Node();
-			n->item = value;
 			if (num_items == 0)
 				insertHead(value);
 			else {
+				Node* n = new Node();
+				n->item = value;
 				tail->next = n;
 				tail = n;
 				num_items++;
@@ -46,11 +47,11 @@ public:
 	}
 	void insertAfter(ItemType value, ItemType insertionNode) {
 		if (!InList(value)) {
-			Node* n = new Node();
-			n->item = value;
 			Node* node = head;
 			while (node != NULL) {
 				if (node->item == insertionNode) {
+					Node* n = new Node();
+					n->item = value;
 					n->next = node->next;
 					node->next = n;
 					if (n->next == NULL)
