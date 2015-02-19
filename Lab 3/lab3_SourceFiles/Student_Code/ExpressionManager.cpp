@@ -197,8 +197,10 @@ string ExpressionManager::infixToPostfix(string infixExpression) {
 
 		string currentoperator;
 		cout << "Input: " << infixExpression << endl;
-		while (strm>>input) {
+		while (strm >> input) {
+
 			cout << input << endl;
+			/*
 			currentoperator = operators.top();
 			if (isOperator(currentoperator) && yard.size() > 1)  {
 				string temp1;
@@ -224,6 +226,7 @@ string ExpressionManager::infixToPostfix(string infixExpression) {
 			PrintYard();
 			PrintStack(operators,"Operators");
 			return yard.top();
+			*/
 		}
 	}
 	else
