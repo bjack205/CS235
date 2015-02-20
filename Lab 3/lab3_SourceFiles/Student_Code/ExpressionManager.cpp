@@ -14,7 +14,18 @@ string toString(int number) {
 }
 
 string EncloseExp(string expression) {
-	return "(" + expression + ")";
+	istringstream strm;
+	strm.str(expression);
+	string input1;
+	string input2;
+
+	strm >> input1;
+	strm >> input2;
+	if (strm.fail())
+		return expression;
+	else
+		return "( " + expression + " )";
+
 }
 
 int isBracket(string bracket) {
@@ -22,14 +33,32 @@ int isBracket(string bracket) {
 	//"1" Opening
 	//"2" Closing
 	if (bracket == "(")
-		return true;
+		return 1;
+	if (bracket == ")")
+		return 2;
 	if (bracket == "{")
-		return true;
+		return 1;
+	if (bracket == "}")
+		return 2;
 	if (bracket == "[")
-		return true;
-	return false;
+		return 1;
+	if (bracket == "]")
+		return 2;
+	return 0;
 }
 
+bool check_int(string input)
+{
+	for (int i = 0; i < input.length(); i++)
+	{
+		char letter = input[i];
+		if (!isdigit(letter))
+		{
+			return false;
+		}
+	}
+	return true;
+}
 bool isValid(string expression) {
 	istringstream strm;
 	string input;
@@ -40,12 +69,16 @@ bool isValid(string expression) {
 			input != "[" && input != "]" &&
 			input != "+" && input != "-" &&
 			input != "*" && input != "/" &&
-			input != "%" &&
-			(atoi(input.c_str()) == 0))
+			input != "%" && (atoi(input.c_str()) == 0))
 			return false;
+		if (atoi(input.c_str()) > 0) {
+			if (!check_int(input))
+				return false;
+		}
 	}
 	return true;
 }
+
 
 bool isOperator(string input) {
 	if (atoi(input.c_str())== 0)
@@ -83,6 +116,16 @@ int PerformOperation(int num1, int num2, string operatorstring) {
 	if (operatorstring == "%")
 		return num2 % num1;
 	return -1;
+}
+
+int OperatorPrecedence(string operatorstring) {
+	if (operatorstring == "+" || operatorstring == "-")
+		return 1;
+	if (operatorstring == "*" || operatorstring == "/")
+		return 2;
+	if (operatorstring == "(" || operatorstring == ")")
+		return -1;
+	return 0;
 }
 
 void PrintStack(stack<string> mystack, string name) {
@@ -148,6 +191,7 @@ bool ExpressionManager::isBalanced(string expression) {
 
 }
 string ExpressionManager::postfixToInfix(string postfixExpression) {
+	clear();
 	if (isValid(postfixExpression)) {
 
 		istringstream strm;
@@ -167,7 +211,7 @@ string ExpressionManager::postfixToInfix(string postfixExpression) {
 					yard.pop();
 					temp2 = yard.top();
 					yard.pop();
-					tempresult = EncloseExp(temp2) + input + EncloseExp(temp1);
+					tempresult = EncloseExp(temp2) + " " + input + " " + EncloseExp(temp1);
 					yard.push(tempresult);
 				}
 			}
@@ -178,56 +222,69 @@ string ExpressionManager::postfixToInfix(string postfixExpression) {
 			}
 			PrintYard();
 		}
-
-		return yard.top();
+		if (yard.size() > 1)
+			return "invalid";
+		else
+			return EncloseExp(yard.top());
 	}
 	else
 		return "invalid";
 }
+string appendPostFix(string expression, string input) {
+	return expression + " " + input;
+}
 string ExpressionManager::infixToPostfix(string infixExpression) {
 	if (isValid(infixExpression)) {
 
-		string test = "40 * ( 2 + 4 - ( 2 + 2 ) ) - 4 / 5 / 6";
-		string result;
+		string postfix;
 		istringstream strm;
 		string input;
 		strm.str(infixExpression);
-		stack<string> operators;
-		stack<string> brackets;
 
-		string currentoperator;
 		cout << "Input: " << infixExpression << endl;
 		while (strm >> input) {
 
-			cout << input << endl;
-			/*
-			currentoperator = operators.top();
-			if (isOperator(currentoperator) && yard.size() > 1)  {
-				string temp1;
-				string temp2;
-				string tempresult;
-				temp1 = yard.top();
-				yard.pop();
-				temp2 = yard.top();
-				yard.pop();
-				tempresult = temp2 + " " + temp1 + " " + currentoperator;
-				yard.push(tempresult);
-			}
+			if (isOperator(input) || (isBracket(input) > 0))  {
+				if (yard.empty() || (isBracket(input) == 1))
+					if (isBracket(input) == 2)
+						return "invalid"; //missing parenthesis
+					else
+						yard.push(input);
+				else {
+					if (OperatorPrecedence(input) > OperatorPrecedence(yard.top()))
+						yard.push(input);
+					else {
+						while (!yard.empty() &&
+							  (isBracket(input) != 1) &&
+							  (OperatorPrecedence(input) < OperatorPrecedence(yard.top()))) {
 
-			if (isOperator(input)){
-				operators.push(input);
-			}
-			else if (isBracket(input) == 1) {
-				operators.push(input);
+							postfix = appendPostFix(postfix,yard.top());
+							yard.pop();
+						}
+						if (isBracket(input) == 2) {
+							if (!yard.empty() && (isBracket(yard.top()) == 1))
+								yard.pop();
+							else {
+								cout << isBracket(input) << endl;
+								return "invalid"; //missing parenthesis
+							}
+						}
+						else
+							yard.push(input);
+					}
+				}
 			}
 			else {
-				yard.push(input);
+				postfix = appendPostFix(postfix,input);
 			}
 			PrintYard();
-			PrintStack(operators,"Operators");
-			return yard.top();
-			*/
+			cout << "Postfix string: " << postfix << endl;
 		}
+		while (!yard.empty()) {
+			postfix = appendPostFix(postfix,yard.top());
+			yard.pop();
+		}
+		return postfix;
 	}
 	else
 		return "invalid";
