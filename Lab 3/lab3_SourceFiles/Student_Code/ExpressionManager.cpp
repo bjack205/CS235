@@ -69,7 +69,8 @@ bool isValid(string expression) {
 			input != "[" && input != "]" &&
 			input != "+" && input != "-" &&
 			input != "*" && input != "/" &&
-			input != "%" && (atoi(input.c_str()) == 0))
+			input != "%" && (atoi(input.c_str()) == 0) &&
+			input != "0")
 			return false;
 		if (atoi(input.c_str()) > 0) {
 			if (!check_int(input))
@@ -153,11 +154,11 @@ void ExpressionManager::clear() {
 }
 
 bool ExpressionManager::isBalanced(string expression) {
+	clear();
 	istringstream strm;
 	string input;
 	strm.str(expression);
 
-	cout << "Input: " << expression << endl;
 	while (strm>>input){
 		if (yard.empty()) {
 			if (isBracket(input) == 1)
@@ -180,7 +181,6 @@ bool ExpressionManager::isBalanced(string expression) {
 				}
 			}
 		}
-		PrintYard();
 	}
 	if (yard.empty())
 		return true;
@@ -198,7 +198,6 @@ string ExpressionManager::postfixToInfix(string postfixExpression) {
 		string input;
 		strm.str(postfixExpression);
 
-		cout << "Input: " << postfixExpression << endl;
 		while (strm>>input) {
 			if (isOperator(input)) {
 				if (yard.size() < 2)
@@ -220,7 +219,6 @@ string ExpressionManager::postfixToInfix(string postfixExpression) {
 			else {
 				yard.push(input);
 			}
-			PrintYard();
 		}
 		if (yard.size() > 1)
 			return "invalid";
@@ -231,9 +229,13 @@ string ExpressionManager::postfixToInfix(string postfixExpression) {
 		return "invalid";
 }
 string appendPostFix(string expression, string input) {
-	return expression + " " + input;
+	if (expression.length() > 0)
+		return expression + " " + input;
+	else
+		return input;
 }
 string ExpressionManager::infixToPostfix(string infixExpression) {
+	clear();
 	if (isValid(infixExpression)) {
 
 		string postfix;
@@ -241,7 +243,6 @@ string ExpressionManager::infixToPostfix(string infixExpression) {
 		string input;
 		strm.str(infixExpression);
 
-		cout << "Input: " << infixExpression << endl;
 		while (strm >> input) {
 
 			if (isOperator(input) || (isBracket(input) > 0))  {
@@ -255,15 +256,19 @@ string ExpressionManager::infixToPostfix(string infixExpression) {
 						yard.push(input);
 					else {
 						while (!yard.empty() &&
-							  (isBracket(input) != 1) &&
-							  (OperatorPrecedence(input) < OperatorPrecedence(yard.top()))) {
+							  (isBracket(yard.top()) != 1) &&
+							  (OperatorPrecedence(input) <= OperatorPrecedence(yard.top()))) {
 
 							postfix = appendPostFix(postfix,yard.top());
 							yard.pop();
 						}
 						if (isBracket(input) == 2) {
-							if (!yard.empty() && (isBracket(yard.top()) == 1))
-								yard.pop();
+							if (!yard.empty() && (isBracket(yard.top()) == 1)) {
+								if (ClosingBracket(yard.top()) == input)
+									yard.pop();
+								else
+									return "invalid";
+							}
 							else {
 								cout << isBracket(input) << endl;
 								return "invalid"; //missing parenthesis
@@ -277,19 +282,25 @@ string ExpressionManager::infixToPostfix(string infixExpression) {
 			else {
 				postfix = appendPostFix(postfix,input);
 			}
-			PrintYard();
-			cout << "Postfix string: " << postfix << endl;
 		}
 		while (!yard.empty()) {
-			postfix = appendPostFix(postfix,yard.top());
-			yard.pop();
+			if (isBracket(yard.top()) == 0) {
+				postfix = appendPostFix(postfix,yard.top());
+				yard.pop();
+			}
+			else
+				return "invalid";
 		}
-		return postfix;
+		if (postfixEvaluate(postfix) == "invalid")
+			return "invalid";
+		else
+			return postfix;
 	}
 	else
 		return "invalid";
 }
 string ExpressionManager::postfixEvaluate(string postfixExpression) {
+	clear();
 	if (isValid(postfixExpression)) {
 		string result;
 
@@ -297,7 +308,6 @@ string ExpressionManager::postfixEvaluate(string postfixExpression) {
 		string input;
 		strm.str(postfixExpression);
 
-		cout << "Input: " << postfixExpression << endl;
 		while (strm>>input) {
 			if (isOperator(input)) {
 				if (yard.size() < 2) {
@@ -325,7 +335,6 @@ string ExpressionManager::postfixEvaluate(string postfixExpression) {
 			else {
 				yard.push(input);
 			}
-			PrintYard();
 		}
 		if (yard.size() == 1) {
 			result = yard.top();

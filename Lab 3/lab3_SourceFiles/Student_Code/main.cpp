@@ -8,46 +8,10 @@
 
 using namespace std;
 
-bool check_int2(string input)
-{
-	for (int i = 0; i < input.length(); i++)
-	{
-		char letter = input[i];
-		if (!isdigit(letter))
-		{
-			return false;
-		}
-	}
-	return true;
-}
-bool isValid2(string expression) {
-	istringstream strm;
-	string input;
-	strm.str(expression);
-	while (strm>>input) {
-		if (input != "(" && input != ")" &&
-			input != "{" && input != "}" &&
-			input != "[" && input != "]" &&
-			input != "+" && input != "-" &&
-			input != "*" && input != "/" &&
-			input != "%" && (atoi(input.c_str()) == 0))
-			return false;
-
-		if (atoi(input.c_str()) > 0) {
-			if (!check_int2(input))
-				return false;
-		}
-	}
-	return true;
-}
-
 int main() {
 	string input;
 	ExpressionManager yard;
 
-	cout << check_int2("14 +1") << endl;
-	string test1 = "{ + 3 4.2";
-	cout << isValid2(test1) << endl;
 	//Part 1
 	if (false) {
 		string test11 = "{ { [ ( ) ] } ( ) }";
@@ -67,17 +31,18 @@ int main() {
 		cout << yard.infixToPostfix(test22) << endl;
 	}
 	//Part 3
-	if (true) {
+	if (false) {
 		string test31 = "40 2 4 + 1 1 + - * 4 2 / 1 / - 7 %";
 		cout << yard.postfixToInfix(test31) << endl;;
 	}
 	//Part 4
-	if (false) {
+	if (true) {
 		string test41 = "40 2 4 + 1 1 + - * 4 2 / 1 / - 7 %";
 		string test42 = "+ 3 4 +";
 		string test43 = "4 5 2 + * 2 2 - +";
-		cout << "Result: " << yard.postfixEvaluate(test41) << endl;
-		cout << "Result: " << yard.postfixEvaluate(test42) << endl;
+		string test44 = "0 3 2 + *";
+		//cout << "Result: " << yard.postfixEvaluate(test41) << endl;
+		cout << "Result: " << yard.postfixEvaluate(test44) << endl;
 	}
 
 	cout << "Would you like to exit? y/n ";
