@@ -2,6 +2,10 @@
 #include <string>
 #include "Header.h"
 
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+
 using std::count;
 using std::cin;
 
@@ -9,6 +13,9 @@ int main() {
 	string input;
 	List<int> numbers;
 	numbers.insertTail(1);
+	numbers.clear();
+
+	/*
 	numbers.PrintList();
 	numbers.insertHead(0);
 	numbers.insertHead(5);
@@ -16,6 +23,7 @@ int main() {
 	numbers.insertHead(1);
 	numbers.insertTail(10);
 	numbers.insertAfter(3, 4);
+
 	numbers.remove(0);
 	numbers.PrintList();
 
@@ -35,8 +43,8 @@ int main() {
 	numbers.insertTail(10);
 	numbers.insertAfter(3, 4);
 	numbers.PrintList();
-	
-	cout << "Item at index 4: " << numbers.at(4) << endl;
+	*/
+
 	
 	//cout << numbers.InList(2) << endl;
 	cout << "Head: " << numbers.getHead() << " Tail: " << numbers.getTail() << endl;
@@ -44,8 +52,11 @@ int main() {
 
 	cout << "Exit? (y/n) ";
 	cin >> input;
+	
+	_CrtDumpMemoryLeaks();
 	if (input == "y")
 		return 0;
 	else
 		return 0;
+	
 }

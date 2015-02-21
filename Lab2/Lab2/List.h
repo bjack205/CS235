@@ -68,8 +68,10 @@ public:
 		if (head->item == value) {
 			toRemove = head;
 			head = head->next;
-			delete toRemove;
 			num_items--;
+			if (toRemove == tail)
+				tail = NULL;
+			delete toRemove;
 		}
 		else {
 			node = node->next;
@@ -93,8 +95,15 @@ public:
 		return num_items;
 	}
 	void clear() {
-		while (this->size() > 0)
-			this->remove(head->item);
+		Node* n;
+		while (this->size() > 0) {
+			n = head;
+			head = head->next;
+			delete n;
+			num_items--;
+		}
+		
+			
 	}
 	ItemType at(int index) {
 		if (index >= num_items || index < 0) {
