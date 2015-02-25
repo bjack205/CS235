@@ -96,7 +96,6 @@ void testDeque() {
 }
 void testStation() {
 	Station station;
-	station.addtoStation(1);
 }
 int main() {
 	

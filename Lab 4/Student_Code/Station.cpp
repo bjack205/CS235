@@ -27,7 +27,7 @@ void Station::clearPort() {
 }
 
 //Part 1
-bool Station::addtoStation(int car) {
+bool Station::addToStation(int car) {
 	if (current_car == -1 && validCar(car)) {
 		current_car = car;
 		return true;
