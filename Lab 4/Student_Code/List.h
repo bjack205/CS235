@@ -51,14 +51,14 @@ public:
 	ItemType getHead() {
 		if (head != NULL)
 			return head->item;
-		else
-			return NULL;
+		//else
+			//return NULL;
 	}
 	ItemType getTail() {
 		if (tail != NULL)
 			return tail->item;
-		else
-			return NULL;
+		//else
+			//return NULL;
 	}
 	void removeHead() {
 		if (!isEmpty()) {

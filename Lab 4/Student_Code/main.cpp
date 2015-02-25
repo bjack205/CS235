@@ -36,6 +36,8 @@ void testStack() {
 	stack.push(2);
 	stack.push(4);
 	stack.PrintStack();
+	int testval = 0;
+	cout << "Is " << testval << " in Stack?: " << stack.inStack(testval) << endl;
 	cout << "Is Empty? " << stack.isEmpty() << endl;
 	stack.pop();
 	cout << "Top: " << stack.top() << endl;
@@ -86,6 +88,7 @@ void testDeque() {
 	dq.addRight(10);
 	dq.addLeft(5);
 	dq.addLeft(2);
+	cout << "4 In deque: " << dq.inDeque(9) << endl;
 	dq.PrintDeque();
 	dq.removeLeft();
 	dq.removeLeft();
@@ -93,6 +96,7 @@ void testDeque() {
 	dq.removeRight();
 	dq.removeRight();
 	dq.PrintDeque();
+
 }
 void testStation() {
 	Station station;
@@ -100,7 +104,7 @@ void testStation() {
 int main() {
 	
 	string input;
-	testDeque();
+	testStack();
 	cout << "Press key to exit: ";
 	cin >> input;
 	
