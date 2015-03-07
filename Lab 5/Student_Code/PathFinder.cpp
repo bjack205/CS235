@@ -2,10 +2,25 @@
 #include <sstream>
 #include <cstdlib>
 #include <fstream>
+#include <stdlib.h>
 
 #include "PathFinder.h"
 
+//Extra Functions
+bool check_int(string input)
+{
 
+	for (int i = 0; i < input.length(); i++)
+	{
+		char letter = input[i];
+		if (!isdigit(letter))
+		{
+			//cout << "Not Integer" << endl;
+			return false;
+		}
+	}
+	return true;
+}
 //Part I
 string PathFinder::getMaze() {
 	ostringstream out;
@@ -29,25 +44,55 @@ void PathFinder::createRandomMaze() {
 		}
 	}
 	maze[0][0][0] = 1;
-	maze[MAZELENGTH][MAZELENGTH][MAZELENGTH] = 1;
+	maze[MAZELENGTH-1][MAZELENGTH-1][MAZELENGTH-1] = 1;
 }
 
 bool PathFinder::importMaze(string file_name) {
-	ifstream mazefile(file_name);
-	if (mazefile.is_open()) {
-		for (int k = 0; k < MAZELENGTH; k++) {
-			for (int j = 0; j < MAZELENGTH; j++) {
-				for (int i = 0; i < MAZELENGTH; i++) {
-					mazefile >> maze[i][j][k];
-				}
+	string line;
+	string input;
+	ifstream file(file_name);
+	int numinput;
+	int zeros = 0;
+	int ones = 0;
+	int i = 0, j = 0, k = 1;
+	while (getline(file, line)) {
+		istringstream lstream;
+		lstream.str(line);
+		i = 0;
+		while (lstream >> input) {
+			if (check_int(input)) {
+				numinput = atoi(input.c_str());
+				if (numinput == 0)
+					zeros++;
+				else if (numinput == 1)
+					ones++;
+				else
+					return false;
+				//cout << i << " " << j << " " << k << endl;
+				maze[i][j][k] = numinput;
 			}
+			else
+				return false;
+			i++;
 		}
-		return true;
+		if (i == 0) {
+			if (j != MAZELENGTH)
+				return false;
+			j = -1;
+			k++;
+		}
+		else if (i != MAZELENGTH)
+			return false;
+		j++;
+		if (k > MAZELENGTH)
+			return false;
 	}
-	else {
+	if (k != MAZELENGTH)
 		return false;
-	}
+	if ((ones < 5) || (zeros < 5))
+		return false;
 	
+	return true;
 }
 
 //Extras
@@ -59,4 +104,25 @@ void PathFinder::resetMaze() {
 			}
 		}
 	}
+}
+bool PathFinder::validMaze() {
+	int zeros = 0;
+	int ones = 0;
+	for (int k = 0; k < MAZELENGTH; k++) {
+		for (int j = 0; j < MAZELENGTH; j++) {
+			for (int i = 0; i < MAZELENGTH; i++) {
+				if (maze[i][j][k] == 1)
+					ones++;
+				else if (maze[i][j][k] == 0)
+					zeros++;
+				else
+					return false;
+			}
+		}
+	}
+	if (maze[0][0][0] != 1)
+		return false;
+	if (maze[MAZELENGTH - 1][MAZELENGTH - 1][MAZELENGTH - 1] != 1)
+		return false;
+
 }

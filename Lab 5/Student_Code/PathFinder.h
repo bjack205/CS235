@@ -26,5 +26,5 @@ public:
 
 	//Extras
 	void resetMaze();
-
+	bool validMaze();
 };
