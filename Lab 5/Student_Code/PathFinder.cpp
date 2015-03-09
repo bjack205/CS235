@@ -70,32 +70,45 @@ bool PathFinder::importMaze(string file_name) {
 					zeros++;
 				else if (numinput == 1)
 					ones++;
-				else
+				else {
+					this->resetMaze();
 					return false;
+				}
 				//cout << i << " " << j << " " << k << endl;
 				maze[i][j][k] = numinput;
 			}
-			else
+			else {
+				this->resetMaze();
 				return false;
+			}
 			i++;
 		}
 		if (i == 0) {
-			if (j != MAZELENGTH)
+			if (j != MAZELENGTH) {
+				this->resetMaze();
 				return false;
+			}
 			j = -1;
 			k++;
 		}
-		else if (i != MAZELENGTH)
+		else if (i != MAZELENGTH) {
+			this->resetMaze();
 			return false;
+		}
 		j++;
-		if (k > MAZELENGTH)
+		if (k > MAZELENGTH) {
+			this->resetMaze();
 			return false;
+		}
 	}
-	if (k != MAZELENGTH - 1)
+	if (k != MAZELENGTH - 1) {
+		this->resetMaze();
 		return false;
-	if ((maze[0][0][0] != 1) || (maze[MAZELENGTH - 1][MAZELENGTH - 1][MAZELENGTH - 1] != 1))
+	}
+	if ((maze[0][0][0] != 1) || (maze[MAZELENGTH - 1][MAZELENGTH - 1][MAZELENGTH - 1] != 1)) {
+		this->resetMaze();
 		return false;
-	
+	}
 	return true;
 }
 
