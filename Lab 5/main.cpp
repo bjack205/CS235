@@ -18,6 +18,7 @@ using namespace std;
 int main() {
 
 	PathFinder finder;
+	
 	cout << "Valid?: " << finder.importMaze("Invalid1.txt") << endl;
 	cout << "Valid?: " << finder.importMaze("Invalid2.txt") << endl;
 	cout << "Valid?: " << finder.importMaze("Invalid3.txt") << endl;
@@ -33,8 +34,8 @@ int main() {
 	string mazestring = finder.getMaze();
 	//cout << mazestring << endl;
 	for (int i = 0; i < 4; i++) {
-		finder.createRandomMaze();
-		mazestring = finder.getMaze();
+		//finder.createRandomMaze();
+		//mazestring = finder.getMaze();
 		//cout << mazestring;
 		//cout << "* * * * * * * * * * * * * * *" << endl;
 	}

@@ -54,7 +54,7 @@ bool PathFinder::importMaze(string file_name) {
 	int numinput;
 	int zeros = 0;
 	int ones = 0;
-	int i = 0, j = 0, k = 1;
+	int i = 0, j = 0, k = 0;
 	while (getline(file, line)) {
 		istringstream lstream;
 		lstream.str(line);
@@ -87,9 +87,9 @@ bool PathFinder::importMaze(string file_name) {
 		if (k > MAZELENGTH)
 			return false;
 	}
-	if (k != MAZELENGTH)
+	if (k != MAZELENGTH - 1)
 		return false;
-	if ((ones < 5) || (zeros < 5))
+	if ((maze[0][0][0] != 1) || (maze[MAZELENGTH - 1][MAZELENGTH - 1][MAZELENGTH - 1] != 1))
 		return false;
 	
 	return true;
