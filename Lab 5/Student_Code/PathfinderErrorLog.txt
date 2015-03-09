@@ -1,0 +1,190 @@
+[Pt2].[getMaze after importMaze on "Mazes/Solvable1.txt"]: Imported maze does not match its file
+The following is the returned maze as our program was able to understand it.
+A value of 9 indicates that no data was understood for that cell.
+Solvable according to our program: no
+	1 1 1 1 1
+	0 0 0 1 0
+	0 0 0 1 0
+	0 0 0 1 0
+	0 0 0 0 0
+
+	1 1 0 1 0
+	0 0 0 1 0
+	1 1 1 1 0
+	1 0 0 0 0
+	1 0 0 0 0
+
+	0 1 0 1 0
+	0 0 0 0 0
+	0 0 0 0 0
+	0 0 0 0 0
+	1 0 0 0 0
+
+	0 1 0 1 0
+	0 1 0 0 0
+	0 1 1 1 0
+	0 0 0 0 0
+	1 0 0 0 0
+
+	0 0 0 1 0
+	0 0 0 0 0
+	0 0 0 1 0
+	0 0 0 0 0
+	1 0 0 0 0
+
+------------------------------------------------------------------------
+
+
+
+[Pt2].[getMaze after importMaze on "Mazes/Solvable2.txt"]: Imported maze does not match its file
+The following is the returned maze as our program was able to understand it.
+A value of 9 indicates that no data was understood for that cell.
+Solvable according to our program: no
+	1 0 1 1 1
+	0 0 1 1 0
+	0 0 0 0 0
+	0 1 1 0 1
+	0 1 1 1 0
+
+	1 0 1 1 1
+	1 1 1 1 0
+	0 1 0 0 1
+	0 1 1 0 0
+	0 0 0 0 1
+
+	1 0 1 0 0
+	1 0 1 0 0
+	1 0 0 0 1
+	1 0 0 1 1
+	0 0 1 1 1
+
+	1 1 0 0 0
+	0 1 0 0 1
+	1 0 0 0 0
+	0 0 0 1 1
+	0 1 1 0 0
+
+	0 1 1 1 0
+	1 1 0 1 1
+	0 1 0 1 1
+	0 0 1 0 0
+	0 1 0 1 1
+
+------------------------------------------------------------------------
+
+
+
+[Pt2].[getMaze after importMaze on "Mazes/Unsolvable1.txt"]: Imported maze does not match its file
+The following is the returned maze as our program was able to understand it.
+A value of 9 indicates that no data was understood for that cell.
+Solvable according to our program: no
+	1 1 1 1 0
+	0 0 0 1 0
+	0 0 0 1 0
+	0 0 0 1 0
+	0 0 0 0 0
+
+	1 1 0 1 0
+	0 0 0 1 0
+	1 1 1 1 0
+	1 0 0 0 0
+	1 0 0 0 0
+
+	0 1 0 1 0
+	0 0 0 0 0
+	0 0 0 0 0
+	0 0 0 0 0
+	1 0 0 0 0
+
+	0 1 0 1 0
+	0 1 0 0 0
+	0 1 1 1 0
+	0 0 0 0 0
+	1 0 0 0 0
+
+	0 0 0 1 0
+	0 0 0 0 0
+	0 0 0 1 0
+	0 0 0 0 0
+	1 0 0 0 0
+
+------------------------------------------------------------------------
+
+
+
+[Pt2].[getMaze after importMaze on "Mazes/Unsolvable2.txt"]: Imported maze does not match its file
+The following is the returned maze as our program was able to understand it.
+A value of 9 indicates that no data was understood for that cell.
+Solvable according to our program: no
+	1 0 1 1 0
+	0 0 1 1 0
+	0 0 0 0 0
+	0 1 1 0 1
+	0 1 1 1 0
+
+	1 0 1 1 1
+	1 1 1 1 0
+	0 1 0 0 1
+	0 1 1 0 0
+	0 0 0 0 1
+
+	1 0 1 0 0
+	1 0 1 0 0
+	1 0 0 0 1
+	1 0 0 1 1
+	0 0 1 1 1
+
+	1 1 0 0 0
+	0 1 0 0 1
+	1 0 0 0 0
+	0 0 0 1 1
+	0 1 1 0 0
+
+	0 1 1 1 0
+	1 1 0 1 1
+	0 1 0 1 1
+	0 0 1 0 0
+	0 1 0 1 1
+
+------------------------------------------------------------------------
+
+
+
+[Pt2].[getMaze after importMaze on "Mazes/Unsolvable3.txt"]: Imported maze does not match its file
+The following is the returned maze as our program was able to understand it.
+A value of 9 indicates that no data was understood for that cell.
+Solvable according to our program: no
+	1 1 1 1 0
+	1 1 1 1 1
+	1 1 1 1 1
+	1 1 1 1 1
+	1 1 1 1 0
+
+	1 1 1 1 1
+	1 1 1 1 1
+	1 1 1 1 1
+	1 1 1 1 1
+	1 1 1 1 1
+
+	1 1 1 1 1
+	1 1 1 1 1
+	1 1 1 1 1
+	1 1 1 1 1
+	1 1 1 1 1
+
+	1 1 1 1 1
+	1 1 1 1 1
+	1 1 1 1 1
+	1 1 1 1 1
+	1 1 1 1 1
+
+	1 1 1 1 1
+	1 1 1 1 1
+	1 1 1 1 1
+	1 1 1 1 1
+	1 1 1 1 0
+
+------------------------------------------------------------------------
+
+
+

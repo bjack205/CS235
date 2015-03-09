@@ -1,4 +1,6 @@
 #include "Factory.h"
+#include "PathfinderInterface.h"
+#include "PathFinder.h"
 //You may add #include statments here
 
 using namespace std;
@@ -17,6 +19,6 @@ using namespace std;
 */
 PathfinderInterface* Factory::createPathfinder()
 {
-	return NULL;//Modify this line
+	return new PathFinder();//Modify this line
 }
 //=======================================================================================
