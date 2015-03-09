@@ -7,8 +7,7 @@
 #include <array>
 #include <stdlib.h>
 
-#include "Student_Code\Cell.h"
-#include "Student_Code\PathFinder.h"
+#include "Student_Code/PathFinder.h"
 
 
 using namespace std;

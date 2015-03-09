@@ -2,9 +2,13 @@
 #include <sstream>
 #include <cstdlib>
 #include <fstream>
+#include <vector>
 #include <stdlib.h>
+#include <string>
 
 #include "PathFinder.h"
+
+using namespace std;
 
 //Extra Functions
 bool check_int(string input)
@@ -50,12 +54,12 @@ void PathFinder::createRandomMaze() {
 bool PathFinder::importMaze(string file_name) {
 	string line;
 	string input;
-	ifstream file(file_name);
+	ifstream myfile(file_name.c_str());
 	int numinput;
 	int zeros = 0;
 	int ones = 0;
 	int i = 0, j = 0, k = 0;
-	while (getline(file, line)) {
+	while (getline(myfile, line)) {
 		istringstream lstream;
 		lstream.str(line);
 		i = 0;
@@ -95,6 +99,12 @@ bool PathFinder::importMaze(string file_name) {
 	return true;
 }
 
+//Part III
+vector<string> PathFinder::solveMaze() {
+	vector<string> solution;
+	return solution;
+}
+
 //Extras
 void PathFinder::resetMaze() {
 	for (int k = 0; k < MAZELENGTH; k++) {
@@ -125,4 +135,5 @@ bool PathFinder::validMaze() {
 	if (maze[MAZELENGTH - 1][MAZELENGTH - 1][MAZELENGTH - 1] != 1)
 		return false;
 
+	return false;
 }
