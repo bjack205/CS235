@@ -18,8 +18,15 @@ class PathFinder : public PathfinderInterface {
 private:
 	int maze[MAZELENGTH][MAZELENGTH][MAZELENGTH];
 	bool mazeLoaded;
+protected:
+	//Extras
+	void resetMaze();
+	bool validMaze();
+	string readMazeFile(string _file_name);
+	bool validMaze(string mazeString);
+	void readInMazeString(string mazeString);
 public:
-
+	//Constructor
 	PathFinder() : mazeLoaded(false) { resetMaze(); };
 
 	//Part I
@@ -32,7 +39,5 @@ public:
 	//Part III
 	vector<string> solveMaze();
 
-	//Extras
-	void resetMaze();
-	bool validMaze();
+	
 };
