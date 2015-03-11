@@ -154,19 +154,19 @@ vector<string> PathFinder::solveCell(int x, int y, int z) {
 	if ((x >= MAZELENGTH) || (y >= MAZELENGTH) || (z >= MAZELENGTH) ||
 		(x < 0) || (y < 0) || (z < 0)) {
 		path.push_back("Out of Bounds");
-		cout << locationString(x, y, z) << " Out of Bounds" << endl;
+		//cout << locationString(x, y, z) << " Out of Bounds" << endl;
 		return path;
 	}
 	else {
 		int value = maze[x][y][z];
 		if (value == 0) {
 			path.push_back("Wall");
-			cout << locationString(x, y, z) << " Wall" << endl;
+			//cout << locationString(x, y, z) << " Wall" << endl;
 			return path;
 		}
 		else if (value == 2) {
 			path.push_back("Visited");
-			cout << locationString(x, y, z) << " Visited" << endl;
+			//cout << locationString(x, y, z) << " Visited" << endl;
 			return path;
 		}
 		else {
@@ -174,7 +174,7 @@ vector<string> PathFinder::solveCell(int x, int y, int z) {
 			if ((x == MAZELENGTH - 1) && (y == MAZELENGTH - 1) && (z == MAZELENGTH - 1)) {
 				string location = locationString(x, y, z);
 				path.push_back(location);
-				cout << locationString(x, y, z) << " Exit Found" << endl;
+				//cout << locationString(x, y, z) << " Exit Found" << endl;
 				return path;
 			}
 			else {
@@ -186,36 +186,36 @@ vector<string> PathFinder::solveCell(int x, int y, int z) {
 				vector<string> down = solveCell(x, y, z - 1);
 				if (isLocation(north.front())) {
 					north.insert(north.begin(), locationString(x, y, z));
-					cout << locationString(x, y, z) << " Solving" << endl;
+					//cout << locationString(x, y, z) << " Solving" << endl;
 					return north;
 				}
 				if (isLocation(south.front())) {
 					south.insert(south.begin(), locationString(x, y, z));
-					cout << locationString(x, y, z) << " Solving" << endl;
+					//cout << locationString(x, y, z) << " Solving" << endl;
 					return south;
 				}
 				if (isLocation(east.front())) {
 					east.insert(east.begin(), locationString(x, y, z));
-					cout << locationString(x, y, z) << " Solving" << endl;
+					// << locationString(x, y, z) << " Solving" << endl;
 					return east;
 				}
 				if (isLocation(west.front())) {
 					west.insert(west.begin(), locationString(x, y, z));
-					cout << locationString(x, y, z) << " Solving" << endl;
+					//cout << locationString(x, y, z) << " Solving" << endl;
 					return west;
 				}
 				if (isLocation(up.front())) {
 					up.insert(up.begin(), locationString(x, y, z));
-					cout << locationString(x, y, z) << " Solving" << endl;
+					//cout << locationString(x, y, z) << " Solving" << endl;
 					return up;
 				}
 				if (isLocation(down.front())) {
 					down.insert(down.begin(), locationString(x, y, z));
-					cout << locationString(x, y, z) << " Solving" << endl;
+					//cout << locationString(x, y, z) << " Solving" << endl;
 					return down;
 				}
 				path.push_back("No Path");
-				cout << locationString(x, y, z) << " No Path" << endl;
+				//cout << locationString(x, y, z) << " No Path" << endl;
 				return path;
 			}
 		}
