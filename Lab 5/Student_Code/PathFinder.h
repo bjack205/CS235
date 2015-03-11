@@ -25,6 +25,8 @@ protected:
 	string readMazeFile(string _file_name);
 	bool validMaze(string mazeString);
 	void readInMazeString(string mazeString);
+	void copyArray(int original[MAZELENGTH][MAZELENGTH][MAZELENGTH], int copy[MAZELENGTH][MAZELENGTH][MAZELENGTH]);
+
 public:
 	//Constructor
 	PathFinder() : mazeLoaded(false) { resetMaze(); };
@@ -37,6 +39,7 @@ public:
 	bool importMaze(string file_name);
 
 	//Part III
+	vector<string> solveCell(int x, int y, int z);
 	vector<string> solveMaze();
 
 	

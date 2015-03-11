@@ -139,12 +139,108 @@ bool PathFinder::importMaze(string file_name) {
 }
 
 //Part III
+bool isLocation(string result) {
+	if (result.substr(0, 1) == "(")
+		return true;
+	return false;
+}
+string locationString(int x, int y, int z) {
+	string locString = "(" + to_string(x) + ", " + to_string(y) + ", " + to_string(z) + ")";
+	return locString;
+}
+vector<string> PathFinder::solveCell(int x, int y, int z) {
+	vector<string> path;
+	//Base Cases
+	if ((x >= MAZELENGTH) || (y >= MAZELENGTH) || (z >= MAZELENGTH) ||
+		(x < 0) || (y < 0) || (z < 0)) {
+		path.push_back("Out of Bounds");
+		cout << locationString(x, y, z) << " Out of Bounds" << endl;
+		return path;
+	}
+	else {
+		int value = maze[x][y][z];
+		if (value == 0) {
+			path.push_back("Wall");
+			cout << locationString(x, y, z) << " Wall" << endl;
+			return path;
+		}
+		else if (value == 2) {
+			path.push_back("Visited");
+			cout << locationString(x, y, z) << " Visited" << endl;
+			return path;
+		}
+		else {
+			maze[x][y][z] = 2;
+			if ((x == MAZELENGTH - 1) && (y == MAZELENGTH - 1) && (z == MAZELENGTH - 1)) {
+				string location = locationString(x, y, z);
+				path.push_back(location);
+				cout << locationString(x, y, z) << " Exit Found" << endl;
+				return path;
+			}
+			else {
+				vector<string> north = solveCell(x, y + 1, z);
+				vector<string> south = solveCell(x, y - 1, z);
+				vector<string> east = solveCell(x + 1, y, z);
+				vector<string> west = solveCell(x - 1, y, z);
+				vector<string> up = solveCell(x, y, z + 1);
+				vector<string> down = solveCell(x, y, z - 1);
+				if (isLocation(north.front())) {
+					north.insert(north.begin(), locationString(x, y, z));
+					cout << locationString(x, y, z) << " Solving" << endl;
+					return north;
+				}
+				if (isLocation(south.front())) {
+					south.insert(south.begin(), locationString(x, y, z));
+					cout << locationString(x, y, z) << " Solving" << endl;
+					return south;
+				}
+				if (isLocation(east.front())) {
+					east.insert(east.begin(), locationString(x, y, z));
+					cout << locationString(x, y, z) << " Solving" << endl;
+					return east;
+				}
+				if (isLocation(west.front())) {
+					west.insert(west.begin(), locationString(x, y, z));
+					cout << locationString(x, y, z) << " Solving" << endl;
+					return west;
+				}
+				if (isLocation(up.front())) {
+					up.insert(up.begin(), locationString(x, y, z));
+					cout << locationString(x, y, z) << " Solving" << endl;
+					return up;
+				}
+				if (isLocation(down.front())) {
+					down.insert(down.begin(), locationString(x, y, z));
+					cout << locationString(x, y, z) << " Solving" << endl;
+					return down;
+				}
+				path.push_back("No Path");
+				cout << locationString(x, y, z) << " No Path" << endl;
+				return path;
+			}
+		}
+	}
+}
 vector<string> PathFinder::solveMaze() {
-	vector<string> solution;
+	int mazecopy[MAZELENGTH][MAZELENGTH][MAZELENGTH];
+	copyArray(maze, mazecopy);
+	vector<string> solution = solveCell(0, 0, 0);
+	copyArray(mazecopy, maze);
+	if (!isLocation(solution.front()))
+		solution.clear();
 	return solution;
 }
 
 //Extras
+void PathFinder::copyArray(int original[MAZELENGTH][MAZELENGTH][MAZELENGTH], int copy[MAZELENGTH][MAZELENGTH][MAZELENGTH]) {
+	for (int k = 0; k < MAZELENGTH; k++) {
+		for (int j = 0; j < MAZELENGTH; j++) {
+			for (int i = 0; i < MAZELENGTH; i++) {
+				copy[i][j][k] = original[i][j][k];
+			}
+		}
+	}
+}
 void PathFinder::resetMaze() {
 	for (int k = 0; k < MAZELENGTH; k++) {
 		for (int j = 0; j < MAZELENGTH; j++) {

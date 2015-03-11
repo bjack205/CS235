@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <array>
 #include <stdlib.h>
+#include <vector>
 
 #include "Student_Code/PathFinder.h"
 
@@ -39,8 +40,16 @@ int main() {
 		//cout << "* * * * * * * * * * * * * * *" << endl;
 	}
 	cout << endl;
-
+	finder.importMaze("Solvable3.txt");
+	vector<string> path = finder.solveMaze();
 	string input;
+	cout << "Would you like to print? (y/n): ";
+	cin >> input;
+	if (input == "y") {
+		for (int i = 0; i < path.size(); i++) {
+			cout << path[i] << endl;
+		}
+	}
 	cout << "Would you like to exit? (y/n): ";
 	cin >> input;
 	return 0;
