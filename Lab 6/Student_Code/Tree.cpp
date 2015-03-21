@@ -67,6 +67,11 @@ bool Tree::remove(Node*& n, int data) {
 		return true;
 	}
 }
+void Tree::clear() {
+	while (root != NULL) {
+		remove(root->data);
+	}
+}
 
 //Extras
 string Tree::printTree() {

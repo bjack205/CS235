@@ -4,10 +4,11 @@
 #include <string>
 
 #include "Node.h"
+#include "BSTInterface.h"
 
 using std::string;
 
-class Tree {
+class Tree : public BSTInterface {
 private:
 	Node* root;
 
