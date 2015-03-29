@@ -59,6 +59,7 @@ class StudentInterface
 		 * Returns a string representation of the student object There is no trailing new line.
 		 */
 		virtual string toString() = 0;
+
 };
 
 struct Comparator
