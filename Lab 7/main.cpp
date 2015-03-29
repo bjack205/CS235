@@ -50,8 +50,8 @@ int main() {
 	cout << "Import Invalid: " << byu.importStudents("studentListMap_Small.txt", "studentList_Invalid.txt") << endl;
 	cout << "Import Grades: " << byu.importGrades("classList_Total.txt") << endl;
 
-	map<unsigned long long int, Student*> IDlist = byu.getMap();
-	set<Student*, Comparator> roster = byu.getSet();
+	map<unsigned long long int, StudentInterface*> IDlist = byu.getMap();
+	set<StudentInterface*, Comparator> roster = byu.getSet();
 	//print(IDlist);
 	//print(roster);
 	

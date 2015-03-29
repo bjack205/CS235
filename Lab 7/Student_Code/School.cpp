@@ -35,7 +35,7 @@ void School::setGradeConverter() {
 	grades["D-"] = 0.7;
 	grades["E"] = 0;
 }
-Student* School::RosterID(unsigned long long int ID) {
+StudentInterface* School::RosterID(unsigned long long int ID) {
 	for (auto& student : roster) {
 		if (student->getID() == ID)
 			return student;
@@ -44,10 +44,10 @@ Student* School::RosterID(unsigned long long int ID) {
 }
 
 //Main Functions
-map<unsigned long long int, Student*> School::getMap() {
+map<unsigned long long int, StudentInterface*> School::getMap() {
 	return IDlist;
 }
-set<Student*, Comparator> School::getSet() {
+set<StudentInterface*, Comparator> School::getSet() {
 	return roster;
 }
 bool School::importStudents(string mapFileName, string setFileName) {
@@ -150,7 +150,7 @@ string School::querySet(string fileName) {
 		string line;
 		while (getline(file, line)) {
 			unsigned long long int ID = atoi(line.c_str());
-			Student* student = RosterID(ID);
+			StudentInterface* student = RosterID(ID);
 			if (student != NULL) {
 				out << to_string(ID) << " " << student->getGPA() << " " << student->getName() << endl;
 			}
@@ -166,7 +166,7 @@ string School::queryMap(string fileName) {
 		string line;
 		while (getline(file, line)) {
 			unsigned long long int ID = atoi(line.c_str());
-			Student* student;
+			StudentInterface* student;
 			if (IDlist.find(ID) != IDlist.end()) {
 				student = IDlist[ID];
 				out << to_string(ID) << " " << student->getGPA() << " " << student->getName() << endl;
