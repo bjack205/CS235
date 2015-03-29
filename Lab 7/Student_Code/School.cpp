@@ -20,6 +20,7 @@ bool validFile(ifstream& myfile) {
 	}
 	if (numLines % 4 > 0)
 		return false;
+	return true;
 }
 void School::setGradeConverter() {
 	grades["A"] = 4.0;
@@ -27,7 +28,7 @@ void School::setGradeConverter() {
 	grades["B+"] = 3.4;
 	grades["B"] = 3.0;
 	grades["B-"] = 2.7;
-	grades["C+"] = 3.4;
+	grades["C+"] = 2.4;
 	grades["C"] = 2.0;
 	grades["C-"] = 1.7;
 	grades["D+"] = 1.4;
@@ -54,13 +55,19 @@ bool School::importStudents(string mapFileName, string setFileName) {
 	ifstream mapFile(mapFileName.c_str());
 	ifstream setFile(setFileName.c_str());
 
+	//cout << "Import Students: " << mapFileName << " " << setFileName << endl;
+
 	if ((mapFile.is_open()) && (setFile.is_open())) {
 		int numLines = 0;
 		string line;
-		if (!validFile(mapFile))
+		if (!validFile(mapFile)) {
+			cout << "invalid map file" << endl;
 			return false;
-		if (!validFile(setFile))
+		}
+		if (!validFile(setFile)) {
+			cout << "invalid set file" << endl;
 			return false;
+		}
 
 		//Return to beginning of file
 		mapFile.clear();
@@ -83,8 +90,9 @@ bool School::importStudents(string mapFileName, string setFileName) {
 			newPhone = line;
 			Student* newStudent = new Student(newName, newID, newPhone, newAddress);
 			IDlist[newID] = newStudent;
+			//cout << "Added " << newName << "to map" << endl;
 		}
-		//Read in Map
+		//Read in Set
 		while (getline(setFile, line)) {
 			unsigned long long int newID = atoi(line.c_str());
 			string newName;
@@ -183,4 +191,5 @@ void School::clear() {
 	for (auto& stu : roster) {
 		delete stu;
 	}
+	roster.clear();
 }

@@ -26,13 +26,14 @@ string Student::getGPA() {
 void Student::addGPA(double classGrade) {
 	numPoints = numPoints + classGrade;
 	numClasses++;
+	//cout << "addGPA: " << name << " " << " adding " << classGrade << " GPA: " << getGPA() << endl;
 }
 string Student::toString() {
 	ostringstream out;
-	out << to_string(ID) << endl;
+	out << ID << endl;
 	out << name << endl;
 	out << address << endl;
 	out << phone << endl;
-	out << getGPA() << endl;
+	out << getGPA();
 	return out.str();
 }
