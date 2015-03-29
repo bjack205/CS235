@@ -5,17 +5,19 @@
 #include <map>
 #include <set>
 
+#include "Student.h"
 #include "StudentInterface.h"
 
 using namespace std;
 
 class School {
 private:
-	map<unsigned long long int, StudentInterface*> IDlist;
-	set<StudentInterface*, Comparator> roster;
+	map<unsigned long long int, Student*> IDlist;
+	set<Student*, Comparator> roster;
 	map<string, double> grades;
 
 	void setGradeConverter();
+	Student* inRoster(unsigned long long int ID);
 public:
 	//Constructor
 	School(){
@@ -23,8 +25,8 @@ public:
 	}
 
 	//Functions
-	map<unsigned long long int, StudentInterface*> getMap();
-	set<StudentInterface*, Comparator> getSet();
+	map<unsigned long long int, Student*> getMap();
+	set<Student*, Comparator> getSet();
 	bool importStudents(string mapFileName, string setFileName);
 	bool importGrades(string fileName);
 	string querySet(string fileName);
