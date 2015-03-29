@@ -17,11 +17,15 @@ private:
 	map<string, double> grades;
 
 	void setGradeConverter();
-	Student* inRoster(unsigned long long int ID);
+	Student* RosterID(unsigned long long int ID);
 public:
 	//Constructor
 	School(){
 		setGradeConverter();
+	}
+	//Destructor
+	~School() {
+		this->clear();
 	}
 
 	//Functions

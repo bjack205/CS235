@@ -35,15 +35,15 @@ void School::setGradeConverter() {
 	grades["D-"] = 0.7;
 	grades["E"] = 0;
 }
-Student* School::inRoster(unsigned long long int ID) {
+Student* School::RosterID(unsigned long long int ID) {
 	for (auto& student : roster) {
 		if (student->getID() == ID)
 			return student;
 	}
-	return false;
+	return NULL;
 }
 
-
+//Main Functions
 map<unsigned long long int, Student*> School::getMap() {
 	return IDlist;
 }
@@ -129,8 +129,11 @@ bool School::importGrades(string fileName) {
 				student = IDlist[ID];
 				student->addGPA(gradePoints);
 			}
-			else if (inRoster(ID)) {
-				
+			else {
+				student = RosterID(ID);
+				if (student != NULL) { //Student is in the Set
+					student->addGPA(gradePoints);
+				}
 			}
 		}
 	}
@@ -147,12 +150,37 @@ string School::querySet(string fileName) {
 		string line;
 		while (getline(file, line)) {
 			unsigned long long int ID = atoi(line.c_str());
+			Student* student = RosterID(ID);
+			if (student != NULL) {
+				out << to_string(ID) << " " << student->getGPA() << " " << student->getName() << endl;
+			}
 		}
-		
-	}
-	else {
-
 	}
 	return out.str();
 }
+string School::queryMap(string fileName) {
+	ifstream file(fileName.c_str());
+	ostringstream out;
 
+	if (file.is_open()) {
+		string line;
+		while (getline(file, line)) {
+			unsigned long long int ID = atoi(line.c_str());
+			Student* student;
+			if (IDlist.find(ID) != IDlist.end()) {
+				student = IDlist[ID];
+				out << to_string(ID) << " " << student->getGPA() << " " << student->getName() << endl;
+			}
+		}
+	}
+	return out.str();
+}
+void School::clear() {
+	for (auto& stu : IDlist) {
+		delete stu.second;
+	}
+	IDlist.clear();
+	for (auto& stu : roster) {
+		delete stu;
+	}
+}

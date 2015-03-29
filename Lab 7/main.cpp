@@ -45,8 +45,8 @@ int main() {
 	cout << stu.toString() << endl;
 
 	School byu = School();
-	//cout << "Import: " << byu.importStudents("studentListMap_Small.txt", "studentListSet_Small.txt") << endl;
-	cout << "Import: " << byu.importStudents("studentList_Total.txt", "studentList_Total.txt") << endl;
+	cout << "Import: " << byu.importStudents("studentListMap_Large.txt", "studentListSet_Large.txt") << endl;
+	//cout << "Import: " << byu.importStudents("studentList_Total.txt", "studentList_Total.txt") << endl;
 	cout << "Import Invalid: " << byu.importStudents("studentListMap_Small.txt", "studentList_Invalid.txt") << endl;
 	cout << "Import Grades: " << byu.importGrades("classList_Total.txt") << endl;
 
@@ -55,10 +55,17 @@ int main() {
 	//print(IDlist);
 	//print(roster);
 	
-	unsigned long long int ID = 398071827;
-	cout << "Name: " << IDlist[ID]->getName() << endl;
-	cout << "GPA: " << IDlist[ID]->getGPA() << endl;
+	unsigned long long int ID = 105396824;
+	//cout << "Name: " << IDlist[ID]->getName() << endl;
+	//cout << "GPA: " << IDlist[ID]->getGPA() << endl;
 
+	//Query Set
+	cout << "\n" << "Query Set: " << endl;
+	cout << byu.querySet("querySet_Small.txt") << endl;
+
+	//Query Map
+	cout << "\n" << "Query Map: " << endl;
+	cout << byu.queryMap("queryMap_Small.txt") << endl;
 
 	string input;
 	cout << "Would you like to exit? (y/n): ";
