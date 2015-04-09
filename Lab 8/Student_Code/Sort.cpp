@@ -6,6 +6,18 @@
 
 using namespace std;
 
+void Sort::sortAll() {
+	if (size > 0)
+		sort(0, size - 1);
+}
+void Sort::sort(int left, int right) {
+	if ((right - left) > 0) {
+		int pivotIndex = medianOfThree(left, right);
+		pivotIndex = partition(left, right, pivotIndex);
+		sort(left, pivotIndex - 1);
+		sort(pivotIndex + 1, right);
+	}
+}
 int Sort::medianOfThree(int left, int right) {
 	int mid;
 	int swap;
@@ -44,7 +56,6 @@ int Sort::partition(int left, int right, int pivotIndex) {
 			}
 			if (up < down) {
 				swapVals(up, down);
-				cout << getArray() << endl;
 			}
 		} while (up < down);
 		swapVals(left, down);
@@ -76,4 +87,7 @@ bool Sort::createArray(int capacity) {
 		return true;
 	}
 	return false;
+}
+void Sort::clear() {
+	delete[] list;
 }

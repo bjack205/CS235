@@ -10,6 +10,8 @@ private:
 	int *list;
 	int capacity;
 	int size;
+protected:
+	void sort(int left, int right);
 public:
 	//Constructor
 	Sort() : capacity(0), size(0) {};
