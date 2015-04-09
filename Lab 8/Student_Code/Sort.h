@@ -3,9 +3,11 @@
 #include <iostream>
 #include <string>
 
+#include "QSInterface.h"
+
 using namespace std;
 
-class Sort {
+class Sort : public QSInterface {
 private:
 	int *list;
 	int capacity;

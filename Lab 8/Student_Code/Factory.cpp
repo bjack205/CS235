@@ -1,4 +1,6 @@
 #include "Factory.h"
+#include "QSInterface.h"
+#include "Sort.h"
 //You may add #include statements here
 
 /*
@@ -15,5 +17,5 @@
 */
 QSInterface * Factory::getQS()
 {
-  return NULL;//Modify this line
+  return new Sort();//Modify this line
 }
