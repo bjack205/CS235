@@ -19,11 +19,11 @@ void Sort::sort(int left, int right) {
 	}
 }
 int Sort::medianOfThree(int left, int right) {
-	cout << "Median of 3: (" << left << "," << right << ")" << endl;
+	//cout << "Median of 3: (" << left << "," << right << ")" << endl;
 	int mid;
 	int swap;
 	//Validation
-	if ((left > right) || (left < 0) || (right >= size) || (size == 0)) {
+	if ((left >= right) || (left < 0) || (right >= size) || (size == 0)) {
 		return -1;
 	}
 	else {
@@ -39,7 +39,7 @@ int Sort::medianOfThree(int left, int right) {
 	}
 }
 int Sort::partition(int left, int right, int pivotIndex) {
-	cout << "Partition: (" << left << "," << right << "," << pivotIndex << ")" << endl;
+	//cout << "Partition: (" << left << "," << right << "," << pivotIndex << ")" << endl;
 	//Validation
 	if ((left > right) || (left < 0) || (right >= size) || (size == 0) || (pivotIndex < left) || (pivotIndex > right)) {
 		return -1;
@@ -72,7 +72,7 @@ string Sort::getArray() {
 		}
 		out << list[size - 1];
 	}
-	cout << "Get Array: {" << out.str() << "}" << endl;
+	//cout << "Get Array: {" << out.str() << "}" << endl;
 	return out.str();
 }
 int Sort::getSize() {
@@ -80,14 +80,14 @@ int Sort::getSize() {
 	return size;
 }
 void Sort::addToArray(int value) {
-	cout << "addToArray: " << value << endl;
+	//cout << "addToArray: " << value << endl;
 	if (size < capacity) {
 		list[size] = value;
 		size++;
 	}
 }
 bool Sort::createArray(int capacity) {
-	cout << "Create Array: " << capacity << endl;
+	//cout << "Create Array: " << capacity << endl;
 	if (capacity >= 0) {
 		delete[] list;
 		list = new int[capacity];
@@ -98,5 +98,8 @@ bool Sort::createArray(int capacity) {
 	return false;
 }
 void Sort::clear() {
+	//cout << "Clear" << endl;
+	capacity = 0;
+	size = 0;
 	delete[] list;
 }

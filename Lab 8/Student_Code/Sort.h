@@ -18,6 +18,11 @@ public:
 	//Constructor
 	Sort() : capacity(0), size(0) {};
 
+	//Destructor
+	~Sort() {
+		clear();
+	}
+
 	//Functions
 	void sortAll();
 	int medianOfThree(int left, int right);
