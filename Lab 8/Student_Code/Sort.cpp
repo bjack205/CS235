@@ -92,6 +92,7 @@ bool Sort::createArray(int capacity) {
 		delete[] list;
 		list = new int[capacity];
 		this->capacity = capacity;
+		size = 0;
 		return true;
 	}
 	return false;
