@@ -64,10 +64,12 @@ int Sort::partition(int left, int right, int pivotIndex) {
 }
 string Sort::getArray() {
 	ostringstream out;
-	for (int i = 0; i < size - 1; i++) {
-		out << list[i] << ",";
+	if (size > 0) {
+		for (int i = 0; i < size - 1; i++) {
+			out << list[i] << ",";
+		}
+		out << list[size - 1];
 	}
-	out << list[size - 1];
 	return out.str();
 }
 int Sort::getSize() {
@@ -84,6 +86,7 @@ bool Sort::createArray(int capacity) {
 		delete[] list;
 		list = new int[capacity];
 		this->capacity = capacity;
+		size = 0;
 		return true;
 	}
 	return false;

@@ -9,6 +9,7 @@ using namespace std;
 int main() {
 	Sort sort;
 	sort.createArray(11);
+	cout << sort.getArray() << endl;
 	sort.addToArray(1);
 	sort.addToArray(2);
 	sort.addToArray(10);
@@ -24,6 +25,11 @@ int main() {
 	//cout << "Partition: " << sort.partition(0, 4, sort.medianOfThree(0, 4)) << endl;
 	sort.sortAll();
 
+	cout << sort.getArray() << endl;
+	cout << "Capacity: " << sort.getCapacity() << endl;
+	cout << "Size: " << sort.getSize() << endl;
+
+	sort.createArray(5);
 	cout << sort.getArray() << endl;
 	cout << "Capacity: " << sort.getCapacity() << endl;
 	cout << "Size: " << sort.getSize() << endl;
