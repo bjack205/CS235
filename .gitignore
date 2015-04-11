@@ -1,9 +1,6 @@
 ## Ignore .zip files
 *.zip
 
-## Ignore ignoreme files
-*.a
-
 ## Ignore Lab Source folders
 *Source
 
