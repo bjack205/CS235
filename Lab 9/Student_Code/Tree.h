@@ -15,13 +15,13 @@ private:
 	string preOrder(Node* n);
 	//Recursive Functions
 	bool add(Node*& n, int data);
-	bool remove(Node*& n, int data);
+	bool removeNode(Node*& n, int data, bool balanceTree = true);
 
 public:
 	//Constructor
 	Tree() : root(NULL) {};
 	//Destructor
-	//~Tree(){ clear(); }
+	~Tree(){ clear(); }
 
 	//BST Functions
 	Node* getRootNode();

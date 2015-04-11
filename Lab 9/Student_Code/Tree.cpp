@@ -38,17 +38,27 @@ bool Tree::add(Node*& n, int data) {
 	return false;
 }
 bool Tree::remove(int data) {
-	return remove(root,data);
+	return removeNode(root,data);
 }
-bool Tree::remove(Node*& n, int data) {
+bool Tree::removeNode(Node*& n, int data, bool balanceTree) {
 	if (n == NULL) {
 		return false;
 	}
 	else if (data < n->data) {
-		return remove(n->left, data);
+		bool status = removeNode(n->left, data);
+		if (balanceTree) {
+			updateHeight(root);
+			balance(n);
+		}
+		return status;
 	}
 	else if (data > n->data) {
-		return remove(n->right, data);
+		bool status = removeNode(n->right, data);
+		if (balanceTree) {
+			updateHeight(root);
+			balance(n);
+		}
+		return status;
 	}
 	//Equal
 	else {
@@ -70,11 +80,11 @@ bool Tree::remove(Node*& n, int data) {
 		//Both Children (CTL)
 		else {
 			int replacement = getMax(n->left);
-			remove(replacement);
+			removeNode(root,replacement,false);
 			n->data = replacement;
+			updateHeight(root);
+			balance(n);
 		}
-		updateHeight(root);
-		balance(n);
 		return true;
 	}
 }

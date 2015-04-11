@@ -28,8 +28,27 @@ int main() {
 	cout << tree.printTree() << endl;
 
 	tree.add(6);
-	tree.updateHeight(tree.getRootNode());
-	cout << tree.printTree() << endl;;
+
+	tree.remove(7);
+	cout << "Remove 7" << endl;
+	cout << tree.printTree() << endl;
+
+	tree.remove(2);
+	cout << tree.printTree() << endl;
+
+	tree.remove(9);
+	cout << tree.printTree() << endl;
+
+	tree.remove(5);
+	cout << tree.printTree() << endl;
+	tree.remove(4);
+	tree.remove(3);
+	tree.remove(6);
+	tree.remove(1);
+	tree.remove(8);
+
+	cout << tree.printTree() << endl;
+
 	string input;
 	cout << "Would you like to exit? (y/n) ";
 	cin >> input;
