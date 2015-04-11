@@ -10,8 +10,9 @@ Node* Tree::getRootNode() {
 	return root;
 }
 bool Tree::add(int data) {
-	add(root, data);
-	return true;
+	bool status = add(root, data);
+	cout << "Add: " << data << " (" << status << ")" << endl;
+	return status;
 }
 bool Tree::add(Node*& n, int data) {
 	if (n == NULL) {
@@ -38,7 +39,9 @@ bool Tree::add(Node*& n, int data) {
 	return false;
 }
 bool Tree::remove(int data) {
-	return removeNode(root,data);
+	bool status = removeNode(root,data);
+	cout << "Remove: " << data << " (" << status << ")" << endl;
+	return status;
 }
 bool Tree::removeNode(Node*& n, int data, bool balanceTree) {
 	if (n == NULL) {
