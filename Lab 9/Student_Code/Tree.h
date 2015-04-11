@@ -3,11 +3,13 @@
 #include <iostream>
 #include <string>
 
+#include "AVLInterface.h"
+
 #include "Node.h"
 
 using std::string;
 
-class Tree {
+class Tree : public AVLInterface {
 private:
 	Node* root;
 

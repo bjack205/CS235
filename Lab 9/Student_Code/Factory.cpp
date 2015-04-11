@@ -1,4 +1,6 @@
 #include "Factory.h"
+#include "AVLInterface.h"
+#include "Tree.h"
 //You may add #include statements here
 
 /*
@@ -15,5 +17,5 @@
 */
 AVLInterface * Factory::getAVL()
 {
-	return NULL;//Modify this line
+	return new Tree();//Modify this line
 }
