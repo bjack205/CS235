@@ -18,7 +18,8 @@ private:
 	//Recursive Functions
 	bool add(Node*& n, int data);
 	bool removeNode(Node*& n, int data, bool balanceTree = true);
-
+	bool replace(Node*& n, int prevValue, int newValue);
+	bool replace(int prevValue, int newValue);
 public:
 	//Constructor
 	Tree() : root(NULL) {};

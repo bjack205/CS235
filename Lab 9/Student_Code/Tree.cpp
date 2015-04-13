@@ -11,7 +11,7 @@ Node* Tree::getRootNode() {
 }
 bool Tree::add(int data) {
 	bool status = add(root, data);
-	cout << "Add: " << data << " (" << status << ")" << endl;
+	//cout << "Add: " << data << " (" << status << ")" << endl;
 	return status;
 }
 bool Tree::add(Node*& n, int data) {
@@ -40,7 +40,7 @@ bool Tree::add(Node*& n, int data) {
 }
 bool Tree::remove(int data) {
 	bool status = removeNode(root,data);
-	cout << "Remove: " << data << " (" << status << ")" << endl;
+	//cout << "Remove: " << data << " (" << status << ")" << endl;
 	return status;
 }
 bool Tree::removeNode(Node*& n, int data, bool balanceTree) {
@@ -83,8 +83,8 @@ bool Tree::removeNode(Node*& n, int data, bool balanceTree) {
 		//Both Children (CTL)
 		else {
 			int replacement = getMax(n->left);
-			removeNode(root,replacement,false);
-			n->data = replacement;
+			remove(replacement);
+			replace(data,replacement);
 			updateHeight(root);
 			balance(n);
 		}
@@ -174,4 +174,25 @@ int Tree::updateHeight(Node* n) {
 		updateHeight(n->getRightChild());
 	n->height = max(getNodeHeight(n->getLeftChild()),getNodeHeight(n->getRightChild())) + 1;
 	return n->getHeight();
+}
+bool Tree::replace(Node*& n, int prevValue, int newValue) {
+	if (n != NULL) {
+		//cout << n->data << " ";
+		if (n->getData() < prevValue)
+			return replace(n->right, prevValue, newValue);
+		else if (n->getData() > prevValue)
+			return replace(n->left, prevValue, newValue);
+		else {
+			n->data = newValue;
+			return true;
+		}
+	}
+	return false;
+}
+bool Tree::replace(int prevValue, int newValue) {
+	bool status = false;
+	//cout << "Replace " << prevValue << " with " << newValue << " Replace Steps: ";
+	status = replace(root, prevValue, newValue);
+	//cout << "(" << status << ")" << endl;
+	return status;
 }
